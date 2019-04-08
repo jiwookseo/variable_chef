@@ -1,5 +1,5 @@
 from django.db import models
-# from . import papago
+from . import papago
 
 
 class Word(models.Model):
@@ -7,8 +7,9 @@ class Word(models.Model):
     en_word = models.TextField()
 
     def translate(self):
-        # self.en_word = papago.translate(self.kr_word)
-        return
+        ok, translated = papago.translate(self.kr_word)
+        if ok:
+            self.en_word = translated
 
     def __str__(self):
         return f"{self.kr_word} : {self.en_word}"
