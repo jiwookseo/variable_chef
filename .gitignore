@@ -37,7 +37,7 @@ lib/
 lib64/
 parts/
 sdist/
-cooking/templates/cooking/
+# cooking/templates/cooking/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
