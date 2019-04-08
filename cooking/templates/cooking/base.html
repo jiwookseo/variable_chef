@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>변수명 레시피</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+</head>
+<body>
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- Bootrtap js files -->
+    <script src=”https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity=”sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN” crossorigin=”anonymous”></script>
+    <script src=”https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity=”sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q” crossorigin=”anonymous”></script>
+    <script src=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity=”sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl” crossorigin=”anonymous”></script>
+    <!-- Vue.js files -->
+    <script src=”https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src=”https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+    <!-- Custom Script -->
+    <script type="text/javascript">
+         new Vue({
+             el: '#starting',
+             delimiters: ['${','}'],
+             data: {
+                 articles: [],
+                 loading: false,
+                 currentArticle: {},
+                 message: null,
+                 newArticle: { 'article_heading': null, 'article_body': null },
+             },
+             mounted: function() {
+
+             },
+             methods: {
+
+             }
+         });
+    </script>
+</body>
+</html>
