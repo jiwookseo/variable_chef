@@ -37,10 +37,7 @@ lib/
 lib64/
 parts/
 sdist/
-<<<<<<< HEAD
-# cooking/templates/cooking/
-=======
->>>>>>> e00aa844b2f5321f526dc2c7d48eec4ecac44c68
+cooking/templates/cooking/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
