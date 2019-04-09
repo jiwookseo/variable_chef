@@ -1,15 +1,27 @@
 from django.db import models
-from . import papago
+from . import papago, recipe
 
 
 class Word(models.Model):
     kr_word = models.CharField(max_length=100, unique=True)
     en_word = models.TextField()
 
-    def translate(self):
-        ok, translated = papago.translate(self.kr_word)
+    @classmethod
+    def create(cls, kr_word):
+        ok, translated = papago.translate(kr_word)
         if ok:
-            self.en_word = translated
+            en_word = translated
+            res = cls(kr_word=kr_word, en_word=en_word)
+            res.save()
+            print('Create Word object')
+            Variable.create(en_word, res)
+            temp = recipe.rcp1(en_word)
+            Variable.create(temp, res)
+            Variable.create(recipe.rcp2(temp), res)
+            print('Create Variable objects')
+            return res
+        print('Fail to translate word')
+        return None
 
     def __str__(self):
         return f"{self.kr_word} : {self.en_word}"
@@ -19,23 +31,23 @@ class Word(models.Model):
 
 
 class Variable(models.Model):
-    name = models.TextField()  # lowercase split by space
+    name = models.TextField(unique=True)  # lowercase split by space
     snake_case = models.TextField()
     camel_case = models.TextField()
     pascal_case = models.TextField()
     copy_hits = models.IntegerField(default=0)
     word = models.ForeignKey(Word, on_delete=models.CASCADE)
 
-    def set_snake(self):
-        self.snake_case = self.name.replace(' ', '_')
-
-    def set_camel(self):
-        camel = self.name.title().replace(' ', '')
-        camel = camel[0].lower() + camel[1:]
-        self.camel_case = camel
-
-    def set_pascal(self):
-        self.pascal_case = self.name.title().replace(' ', '')
+    @classmethod
+    def create(cls, name, word):
+        if cls.objects.filter(name=name):
+            return None
+        snake_case = name.replace(' ', '_')
+        pascal_case = name.title().replace(' ', '')
+        camel_case = pascal_case[0].lower() + pascal_case[1:]
+        res = cls(name=name, snake_case=snake_case, pascal_case=pascal_case, camel_case=camel_case, word=word)
+        res.save()
+        return res
 
     def __str__(self):
         return f"{self.word.kr_word} > {self.name}"
