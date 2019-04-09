@@ -144,6 +144,7 @@ dmypy.json
 
 # User-specific stuff
 .idea/
+<<<<<<< HEAD
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -165,6 +166,8 @@ dmypy.json
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+=======
+>>>>>>> 5bf5991405cb6650d43aaed62f638a9bf9c47d8f
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
