@@ -1,5 +1,5 @@
 <div class="container">
-  <form method="POST" action="">
+  <form method="GET" action="{% url 'variable_list' %}">
   {% csrf_token %}
   {#  {{ form.as_p }}#}
     <div class="form-row justify-content-md-center">
