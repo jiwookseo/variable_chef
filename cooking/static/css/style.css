@@ -11,3 +11,7 @@ body {
 
     height: 100vh;
 }
+
+.card {
+    background-color: transparent;
+}
