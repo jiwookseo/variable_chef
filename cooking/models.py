@@ -1,20 +1,11 @@
 from django.db import models
-<<<<<<< HEAD
-# from . import papago
-=======
 from . import papago, recipe
->>>>>>> 6b69bb745bfc15caea2af75e32d6d9dc6c6d4d7c
 
 
 class Word(models.Model):
     kr_word = models.CharField(max_length=100, unique=True)
     en_word = models.TextField()
 
-<<<<<<< HEAD
-    def translate(self):
-        # self.en_word = papago.translate(self.kr_word)
-        return
-=======
     @classmethod
     def create(cls, kr_word):
         ok, translated = papago.translate(kr_word)
@@ -31,7 +22,6 @@ class Word(models.Model):
             return res
         print('Fail to translate word')
         return None
->>>>>>> 6b69bb745bfc15caea2af75e32d6d9dc6c6d4d7c
 
     def __str__(self):
         return f"{self.kr_word} : {self.en_word}"

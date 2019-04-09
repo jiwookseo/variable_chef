@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import os
 import urllib.request
 
@@ -21,4 +19,3 @@ def translate(text):
         return True, res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower()
     else:
         return False, None
->>>>>>> 6b69bb745bfc15caea2af75e32d6d9dc6c6d4d7c

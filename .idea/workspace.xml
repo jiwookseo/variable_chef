@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18a93c04-bdf6-45fe-874f-469a055e6593" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cooking/recipe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cooking/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cooking/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cooking/papago.py" beforeDir="false" afterPath="$PROJECT_DIR$/cooking/papago.py" afterDir="false" />
     </list>
@@ -35,14 +34,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cooking/models.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cooking/papago.py">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/cooking/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -112,15 +113,15 @@
         <option value="$PROJECT_DIR$/var/views.py" />
         <option value="$PROJECT_DIR$/variable_makers/settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/cooking/models.py" />
         <option value="$PROJECT_DIR$/cooking/papago.py" />
+        <option value="$PROJECT_DIR$/cooking/models.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="215" />
-    <option name="y" value="-9" />
-    <option name="width" value="755" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="770" />
+    <option name="y" value="5" />
+    <option name="width" value="1151" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -241,13 +242,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4428000" />
+    <option name="totallyTimeSpent" value="4560000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="155" y="5" width="1766" height="1047" extended-state="0" />
+    <frame x="770" y="5" width="1151" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13950762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21814848" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -313,6 +314,16 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/cooking/papago.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/variable_makers/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -355,11 +366,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cooking/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/cooking/papago.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooking/recipe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooking/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
