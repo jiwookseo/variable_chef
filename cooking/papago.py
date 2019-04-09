@@ -16,6 +16,6 @@ def translate(text):
     code = response.getcode()
     if code == 200:
         res = response.read().decode('utf-8')
-        return True, res.split(',')[3].split(':')[2][1:-1]
+        return True, res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower()
     else:
         return False, None
