@@ -1,0 +1,9 @@
+body {
+    background: linear-gradient(to left bottom, hsl(45, 100%, 85%) 0%,hsl(145, 100%, 85%) 100%);
+    background-repeat: no-repeat;
+    background-size: auto;
+    align-items: center;
+    background-attachment: scroll;
+
+    height: 100vh;
+}
