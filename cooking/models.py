@@ -32,21 +32,20 @@ class Word(models.Model):
 
 class Variable(models.Model):
     name = models.TextField(unique=True)  # lowercase split by space
-    snake_case = models.TextField()
-    camel_case = models.TextField()
-    pascal_case = models.TextField()
-    copy_hits = models.IntegerField(default=0)
     word = models.ForeignKey(Word, on_delete=models.CASCADE)
 
     @classmethod
     def create(cls, name, word):
         if cls.objects.filter(name=name):
             return None
-        snake_case = name.replace(' ', '_')
-        pascal_case = name.title().replace(' ', '')
-        camel_case = pascal_case[0].lower() + pascal_case[1:]
-        res = cls(name=name, snake_case=snake_case, pascal_case=pascal_case, camel_case=camel_case, word=word)
+        res = cls(name=name, word=word)
         res.save()
+        snake = name.replace(' ', '_')
+        Case.create(name=snake, variable=res, type='snake')
+        pascal = name.title().replace(' ', '')
+        Case.create(name=pascal, variable=res, type='pascal')
+        camel = pascal[0].lower() + pascal[1:]
+        Case.create(name=camel, variable=res, type='camel')
         return res
 
     def __str__(self):
@@ -54,3 +53,22 @@ class Variable(models.Model):
 
     def __repr__(self):
         return f"{self.word.kr_word} > {self.name}"
+
+
+class Case(models.Model):
+    variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
+    name = models.TextField()
+    type = models.TextField()
+    hits = models.IntegerField(default=0)
+
+    @classmethod
+    def create(cls, name, variable, type):
+        res = cls(name=name, word=variable, type=type)
+        res.save()
+        return res
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name

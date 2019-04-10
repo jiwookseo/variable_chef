@@ -3,6 +3,7 @@ import urllib.request
 
 client_id = os.getenv('NAVER_ID')
 client_secret = os.getenv('NAVER_SECRET')
+lookup = {'dummy': 'temporary'}
 
 
 def translate(text):
@@ -16,6 +17,12 @@ def translate(text):
     code = response.getcode()
     if code == 200:
         res = response.read().decode('utf-8')
-        return True, res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower()
+        word_list = res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower().split()
+        word_list = [lookup[word] if word in lookup else word for word in word_list]
+        return True, word_list
     else:
         return False, None
+
+
+if __name__ == "__main__":
+    print(translate(input()))
