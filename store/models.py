@@ -4,7 +4,7 @@ from . import papago, recipe
 
 class Word(models.Model):
     kr_word = models.CharField(max_length=100, unique=True)
-    en_word = models.TextField()
+    en_word = models.CharField(max_length=200)
 
     @classmethod
     def create(cls, kr_word):
@@ -31,7 +31,7 @@ class Word(models.Model):
 
 
 class Variable(models.Model):
-    name = models.TextField(unique=True)  # lowercase split by space
+    name = models.CharField(max_length=200)  # lowercase split by space
     word = models.ForeignKey(Word, on_delete=models.CASCADE)
 
     @classmethod
@@ -57,14 +57,15 @@ class Variable(models.Model):
 
 class Case(models.Model):
     variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
-    name = models.TextField()
-    type = models.TextField()
+    name = models.CharField(max_length=200)
+    type = models.CharField(max_length=200)
     hits = models.IntegerField(default=0)
 
     @classmethod
     def create(cls, name, variable, type):
-        res = cls(name=name, word=variable, type=type)
+        res = cls(name=name, variable=variable, type=type)
         res.save()
+        print('Create Case objects')
         return res
 
     def __str__(self):
@@ -72,3 +73,11 @@ class Case(models.Model):
 
     def __repr__(self):
         return self.name
+
+
+class Recipe(models.Model):
+    name = models.CharField(max_length=50)
+    wrong = models.CharField(max_length=50)
+    short = models.CharField(max_length=50)
+    slice = models.CharField(max_length=50)
+    sound = models.CharField(max_length=50)

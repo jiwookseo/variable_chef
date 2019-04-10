@@ -18,8 +18,7 @@ def translate(text):
     if code == 200:
         res = response.read().decode('utf-8')
         word_list = res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower().split()
-        word_list = [lookup[word] if word in lookup else word for word in word_list]
-        return True, word_list
+        return True, " ".join(word_list)
     else:
         return False, None
 
