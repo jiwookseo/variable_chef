@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class VarConfig(AppConfig):
-    name = 'cooking'
+    name = 'store'

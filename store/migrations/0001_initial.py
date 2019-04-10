@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('camel_case', models.TextField()),
                 ('pascal_case', models.TextField()),
                 ('copy_hits', models.IntegerField(default=0)),
-                ('word', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cooking.Word')),
+                ('word', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.Word')),
             ],
         ),
     ]
