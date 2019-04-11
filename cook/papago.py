@@ -1,9 +1,9 @@
 import os
 import urllib.request
+import string
 
 client_id = os.getenv('NAVER_ID')
 client_secret = os.getenv('NAVER_SECRET')
-lookup = {'dummy': 'temporary'}
 
 
 def translate(text):
@@ -17,8 +17,12 @@ def translate(text):
     code = response.getcode()
     if code == 200:
         res = response.read().decode('utf-8')
-        word_list = res.split(',')[3].split(':')[2][1:-1].replace('.', '').lower().split()
-        return True, " ".join(word_list)
+        word_list = res.split(',')[3].split(':')[2][1:-1].replace('.', '')
+        res = ""
+        for i in word_list:
+            if i not in string.punctuation:
+                res += i
+        return True, " ".join(res.lower().split())
     else:
         return False, None
 
