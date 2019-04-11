@@ -13,6 +13,7 @@ class Recipe(models.Model):
     def create(cls, name, wrong=None, short=None):
         if cls.objects.filter(name=name):
             return None
-        res = cls(name=name, wrong=wrong, short=short, slice=name[:3], sound=recipe.consonant(name))
+        res = cls(name=name, wrong=wrong, short=short, slice=name[:3] if len(name) > 4 else name,
+                  sound=recipe.consonant(name))
         res.save()
         return res

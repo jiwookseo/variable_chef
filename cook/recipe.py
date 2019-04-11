@@ -14,7 +14,7 @@ def rcp(string):
 
 
 def consonant(word):
-    res = [word[0]] + [i for i in word[1:] if i not in {'i', 'e', 'o', 'u', 'a'}][:3]
+    res = [word[0]] + [i for i in word[1:] if i not in {'i', 'e', 'o', 'u', 'a'}][:2]
     return "".join(res)
 
 
