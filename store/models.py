@@ -32,42 +32,24 @@ class Word(models.Model):
 class Variable(models.Model):
     name = models.CharField(max_length=200)  # lowercase split by space
     word = models.ForeignKey(Word, on_delete=models.CASCADE)
+    snake = models.CharField(max_length=200, default='')
+    pascal = models.CharField(max_length=200, default='')
+    camel = models.CharField(max_length=200, default='')
+    hits = models.IntegerField(default=0)
 
     @classmethod
     def create(cls, name, word):
         if cls.objects.filter(name=name):
             return None
-        res = cls(name=name, word=word)
-        res.save()
         snake = name.replace(' ', '_')
-        Case.create(name=snake, variable=res, type='snake')
         pascal = name.title().replace(' ', '')
-        Case.create(name=pascal, variable=res, type='pascal')
         camel = pascal[0].lower() + pascal[1:]
-        Case.create(name=camel, variable=res, type='camel')
-        return res
-
-    def __str__(self):
-        return f"{self.word.kr_word} > {self.name}"
-
-    def __repr__(self):
-        return f"{self.word.kr_word} > {self.name}"
-
-
-class Case(models.Model):
-    variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    type = models.CharField(max_length=200)
-    hits = models.IntegerField(default=0)
-
-    @classmethod
-    def create(cls, name, variable, type):
-        res = cls(name=name, variable=variable, type=type)
+        res = cls(name=name, word=word, snake=snake, camel=camel, pascal=pascal)
         res.save()
         return res
 
     def __str__(self):
-        return self.name
+        return f"{self.word.kr_word} > {self.name}"
 
     def __repr__(self):
-        return self.name
+        return f"{self.word.kr_word} > {self.name}"
