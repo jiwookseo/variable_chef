@@ -37,6 +37,9 @@ class Variable(models.Model):
     camel = models.CharField(max_length=200, default='')
     hits = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['-hits']
+
     @classmethod
     def create(cls, name, word):
         if cls.objects.filter(name=name):
@@ -47,6 +50,11 @@ class Variable(models.Model):
         res = cls(name=name, word=word, snake=snake, camel=camel, pascal=pascal)
         res.save()
         return res
+
+    @property
+    def update_hits(self):
+        self.hits += 1
+        self.save()
 
     def __str__(self):
         return f"{self.word.kr_word} > {self.name}"
