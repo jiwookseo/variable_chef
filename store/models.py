@@ -48,6 +48,11 @@ class Variable(models.Model):
         res.save()
         return res
 
+    @property
+    def update_hits(self):
+        self.hits += 1
+        self.save()
+
     def __str__(self):
         return f"{self.word.kr_word} > {self.name}"
 
