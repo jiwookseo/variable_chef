@@ -37,6 +37,9 @@ class Variable(models.Model):
     camel = models.CharField(max_length=200, default='')
     hits = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['-hits']
+
     @classmethod
     def create(cls, name, word):
         if cls.objects.filter(name=name):
