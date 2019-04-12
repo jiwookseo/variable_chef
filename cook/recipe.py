@@ -1,5 +1,5 @@
 from .models import Recipe
-from . import papago
+from . import papago, google
 
 preposition = {'in', 'at', 'into', 'out', 'on', 'for', 'to', 'from'}
 article = {'a', 'an', 'the'}
@@ -20,6 +20,7 @@ def consonant(word):
 
 def cook(kr_word):
     ok, en_word = papago.translate(kr_word)
+    print(google.syntax_text(en_word))
     if not ok:
         return False, None, None
     res = [[], [], [], []]
@@ -33,9 +34,11 @@ def cook(kr_word):
         res[2].append(recipe.slice)
         res[3].append(recipe.sound)
     for i in range(4):
+        j = None
         if res[i].count('of'):
             j = res[i].index('of')
-        res.append(res[i][j + 1:] + res[i][:j])
+        if j:
+            res.append(res[i][j + 1:] + res[i][:j])
 
     res = [' '.join(i) for i in res if i]
     res[1:] = list(set(res[1:]))
