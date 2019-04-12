@@ -32,6 +32,11 @@ def cook(kr_word):
         res[1].append(recipe.short if recipe.short else word)
         res[2].append(recipe.slice)
         res[3].append(recipe.sound)
+    for i in range(4):
+        if res[i].count('of'):
+            j = res[i].index('of')
+        res.append(res[i][j + 1:] + res[i][:j])
+
     res = [' '.join(i) for i in res if i]
     res[1:] = list(set(res[1:]))
     print(res[0])
