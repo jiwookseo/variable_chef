@@ -1,4 +1,4 @@
-{% if var_set %}
+{% if word %}
   <div class="row justify-content-center">
     <table class="table">
       <thead>
@@ -10,7 +10,7 @@
       </tr>
       </thead>
       <tbody>
-      {% for var in var_set %}
+      {% for var in word.variable_set.all %}
         <tr>
           <td>
             <div class="input-group">

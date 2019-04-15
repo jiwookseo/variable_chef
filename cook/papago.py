@@ -17,7 +17,7 @@ def translate(text):
     code = response.getcode()
     if code == 200:
         res = response.read().decode('utf-8')
-        word_list = res.split(',')[3].split(':')[2][1:-1].replace('.', '')
+        word_list = res.split(',')[3].split(':')[2][1:-1]
         res = ""
         for i in word_list:
             if i not in string.punctuation:

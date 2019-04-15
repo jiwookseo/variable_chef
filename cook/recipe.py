@@ -1,17 +1,6 @@
 from .models import Recipe
 from . import papago, google
 
-preposition = {'in', 'at', 'into', 'out', 'on', 'for', 'to', 'from'}
-article = {'a', 'an', 'the'}
-# conjunction = {'and', 'but', 'or', 'nor', 'so', 'for', 'yet', 'of', 'by'}
-exclude = preposition.union(article)
-
-
-def rcp(string):
-    string = string.split()
-    res = [word for word in string if word not in exclude]
-    return res
-
 
 def consonant(word):
     res = [word[0]] + [i for i in word[1:] if i not in {'i', 'e', 'o', 'u', 'a'}][:2]
@@ -20,11 +9,18 @@ def consonant(word):
 
 def cook(kr_word):
     ok, en_word = papago.translate(kr_word)
-    print(google.syntax_text(en_word))
+    gd = google.syntax_text(en_word)
+    print(gd)
     if not ok:
         return False, None, None
     res = [[], [], [], []]
-    for word in rcp(en_word):
+    check = None
+    for word, tag in gd.items():
+        if tag in {'PUNCT', 'DET', 'ADP'}:
+            if word == 'of':
+                check = len(res[0])
+            else:
+                continue
         recipe = Recipe.objects.filter(name=word).first()
         if not recipe:
             recipe = Recipe.create(name=word)
@@ -33,14 +29,9 @@ def cook(kr_word):
         res[1].append(recipe.short if recipe.short else word)
         res[2].append(recipe.slice)
         res[3].append(recipe.sound)
-    for i in range(4):
-        j = None
-        if res[i].count('of'):
-            j = res[i].index('of')
-        if j:
-            res.append(res[i][j + 1:] + res[i][:j])
-
+    if check:
+        for i in range(4):
+            res.append(res[i][check + 1:] + res[i][:check])
     res = [' '.join(i) for i in res if i]
     res[1:] = list(set(res[1:]))
-    print(res[0])
     return True, res[0], res[1:]

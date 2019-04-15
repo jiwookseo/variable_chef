@@ -14,5 +14,5 @@ def syntax_text(text):
     word_dict = dict()
     for token in tokens:
         part_of_speech_tag = enums.PartOfSpeech.Tag(token.part_of_speech.tag)
-        word_dict[token.text.content] = part_of_speech_tag.name
+        word_dict[token.lemma] = part_of_speech_tag.name
     return word_dict
