@@ -6,6 +6,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserChangeForm
+from django.contrib import messages
 
 
 def signup(request):
@@ -26,8 +27,12 @@ def login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
-            auth_login(request, form.get_user())
+            user = form.get_user()
+            auth_login(request, user)
+            messages.info(request, 'Welcome, Signed in as {}'.format(user.username))
             return redirect(request.GET.get('next') or 'store:index')
+        else:
+            messages.warning(request, 'Check your username or password')
     else:
         form = AuthenticationForm(request)
     return render(request, 'accounts/form.html', {'form': form})
@@ -35,6 +40,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
+    messages.info(request, 'Signed out. Thank you!')
     return redirect('accounts:login')
 
 
@@ -44,7 +50,9 @@ def update(request):
         form = CustomUserChangeForm(instance=request.user, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('store:index')
+            messages.info(request, 'Updated your profile')
+        else:
+            messages.warning(request, 'Check your input')
     else:
         form = CustomUserChangeForm(instance=request.user)
     return render(request, 'accounts/form.html', {'form': form})
