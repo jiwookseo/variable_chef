@@ -10,3 +10,7 @@ body {
     background-attachment: scroll;
     height: 100vh;
 }
+
+.card {
+    background-color: transparent;
+}
