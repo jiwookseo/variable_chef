@@ -1,5 +1,17 @@
 from django.shortcuts import render
-from .models import Word
+from rest_framework import generics
+from .serializers import VariableSerializer
+from .models import Word, Variable
+
+
+class ListVar(generics.ListCreateAPIView):
+    queryset = Variable.objects.all()
+    serializer_class = VariableSerializer
+
+
+class DetailVar(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Variable.objects.all()
+    serializer_class = VariableSerializer
 
 
 def index(request):
