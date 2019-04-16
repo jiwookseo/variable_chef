@@ -1,0 +1,9 @@
+{% extends 'store/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+  <form method="POST" class="col-md-6 offset-md-3">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-outline-secondary d-flex ml-auto" type="submit">submit</button>
+  </form>
+{% endblock %}
