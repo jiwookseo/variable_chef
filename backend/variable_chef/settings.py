@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
