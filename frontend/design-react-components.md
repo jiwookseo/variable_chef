@@ -17,7 +17,7 @@
 
 * App
     * Template
-        * Header
+        * Heading
         * SearchBar
         * WordList
             * WordItem
