@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Variable
+from .models import Variable, Word
 
 
 class VariableSerializer(serializers.ModelSerializer):
@@ -14,3 +14,13 @@ class VariableSerializer(serializers.ModelSerializer):
             'hits',
         )
         model = Variable
+
+
+class WordSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'kr_word',
+            'en_word',
+        )
+        model = Word

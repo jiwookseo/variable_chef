@@ -1,7 +1,17 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import VariableSerializer
+from .serializers import VariableSerializer, WordSerializer
 from .models import Word, Variable
+
+
+class ListWord(generics.ListCreateAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
+
+
+class DetailWord(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
 
 
 class ListVar(generics.ListCreateAPIView):
