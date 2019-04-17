@@ -6,12 +6,17 @@ import WordItem from './WordItem';
 
 const WordList = () => {
   return (
-    <Card>
-      <Card.Content header='Snake case' />
-      <Card.Content>
+    <Card 
+      style={{ 
+        marginTop: '5em',
+        paddingBottom: '3em' 
+      }}
+    >
+      <Card.Content textAlign='left' header='Snake case' />
+      <Card.Content textAlign='left'>
         <WordItem name="temporary_variable" like="16"/>
         <WordItem name="temp_var" like="7"/>
-        <WordItem name="tmp_vrb" likw="5"/>
+        <WordItem name="tmp_vrb" likw="6"/>
       </Card.Content>
     </Card>
   );

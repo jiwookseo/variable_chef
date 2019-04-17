@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Button, Select, Input } from 'semantic-ui-react';
 // import styled from 'styled-components';
 // import theme from './theme';
@@ -10,11 +10,13 @@ const options = [
 
 const SearchBar = () => {
   return (
+    <Fragment style={{ marginBottom: '3em' }}>
     <Input>
-      <input />
       <Select compact options={options} defaultValue='python'></Select>
-      <Button type='submit' color='olive'>Cook</Button>
+      <input />
+      <Button type='submit' inverted color='green'>Cook</Button>
     </Input>
+    </Fragment>
   );
 };
 
