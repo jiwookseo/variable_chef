@@ -8,14 +8,38 @@ const options = [
   { key: '2', text: 'JavaScript', value: 'javascript' },
 ]
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const {
+    value,
+    onChange,
+    onSubmit
+  } = this.props;
+
   return (
-    <Fragment style={{ marginBottom: '3em' }}>
-    <Input>
-      <Select compact options={options} defaultValue='python'></Select>
-      <input />
-      <Button type='submit' inverted color='green'>Cook</Button>
-    </Input>
+    <Fragment 
+      style={{ marginBottom: '3em' }}
+    >
+      <Input 
+        type='text' 
+        placeholder='한글 단어' 
+        action
+      >
+        <Select 
+          compact 
+          options={options} 
+          defaultValue='python'
+        />
+        <input />
+        <Button 
+          type='submit' 
+          inverted 
+          color='green'
+        >
+          Cook
+        </Button>
+      </Input>
+
+      <p>{value}</p>
     </Fragment>
   );
 };

@@ -7,12 +7,34 @@ import SearchBar from './SearchBar';
 import WordList from './WordList';
 
 class Template extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: '',
+      lang: '',
+    }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handlSubmit.bind(this);
+  }
+
+  handleInputChange(e) {
+
+  }
+
+  handleSubmit() {
+
+  }
+
   render() {
     return (
       <Fragment>
         <Heading/>
         <Grid centered columns={2}>
-          <SearchBar/>
+          <SearchBar 
+            value={value}
+            onChange={this.handleInputChange}
+            onSubmit={this.handleSubmit}
+          />
         </Grid>
         <Grid centered columns={3}>
           <WordList />
