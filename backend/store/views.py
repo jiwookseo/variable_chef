@@ -1,7 +1,10 @@
-from django.shortcuts import render
+import json
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from rest_framework import generics
 from .serializers import VariableSerializer, WordSerializer
 from .models import Word, Variable
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 
 class ListWord(generics.ListCreateAPIView):
@@ -55,3 +58,19 @@ def index(request):
         #     for var in word.variable_set.all():
         #         var.update_hits
     return render(request, 'store/index.html', {'word': word})
+
+
+@login_required
+@require_POST
+def hits(request):
+    pk = request.POST.get('pk', None)  # ajax 통신을 통해서 template에서 POST방식으로 전달
+    variable = get_object_or_404(Variable, pk=pk)
+    check = request.user not in variable.hit_users.all()
+    if check:
+        variable.hit_users.add(request.user)
+        variable.update_hits()
+    context = {
+        'check': check,
+        'hits': variable.hits,
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")
