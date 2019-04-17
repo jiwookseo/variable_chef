@@ -1,5 +1,6 @@
 from django.db import models
 from cook import recipe
+from django.conf import settings
 
 
 class Word(models.Model):
@@ -36,6 +37,7 @@ class Variable(models.Model):
     pascal = models.CharField(max_length=200, default='')
     camel = models.CharField(max_length=200, default='')
     hits = models.IntegerField(default=0)
+    hit_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='copy_vars')
 
     class Meta:
         ordering = ['-hits']
