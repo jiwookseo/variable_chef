@@ -39,7 +39,7 @@
   * SearchBar onKeyPress = handleSubmit
 
 
-#### 2. Header
+#### 2. Heading
 
 
 
