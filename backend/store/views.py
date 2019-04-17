@@ -5,8 +5,18 @@ from .models import Word, Variable
 
 
 class ListWord(generics.ListCreateAPIView):
-    queryset = Word.objects.all()
     serializer_class = WordSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Word.objects.all()
+        q = self.request.query_params.get('q', None)
+        if q:
+            queryset = queryset.filter(kr_word=q)
+        return queryset
 
 
 class DetailWord(generics.RetrieveUpdateDestroyAPIView):
@@ -15,8 +25,18 @@ class DetailWord(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ListVar(generics.ListCreateAPIView):
-    queryset = Variable.objects.all()
     serializer_class = VariableSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Variable.objects.all()
+        word = self.request.query_params.get('word', None)
+        if word:
+            queryset = queryset.filter(word=word)
+        return queryset
 
 
 class DetailVar(generics.RetrieveUpdateDestroyAPIView):
