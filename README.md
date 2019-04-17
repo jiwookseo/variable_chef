@@ -8,5 +8,11 @@
 
 ## Built With
 
+### Backend
 * Django 2.2
-* Bootstrap 4.3.1
+
+### Frontend
+* React 16.8.6
+* semantic-ui-css: 2.4.1
+* semantic-ui-react: 0.86.0
+* styled-components: 4.2.0
