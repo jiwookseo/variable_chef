@@ -57,7 +57,7 @@ const SearchBar = (props) => {
           inverted color='green'
           type='submit'
           disabled={
-            !word || !lang
+            !word || !lang || wordError
           }
         />
       </Form.Group>
