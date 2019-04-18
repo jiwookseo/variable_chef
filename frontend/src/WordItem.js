@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Popup } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const Like = styled.span`
@@ -19,5 +19,8 @@ const WordItem = (props) => {
   );
 };
 
+const CopyPopup = () => (
+  <Popup trigger={<WordItem />} content='Click to copy' inverted />
+)
 
 export default WordItem;

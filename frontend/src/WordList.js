@@ -4,9 +4,11 @@ import { Card } from 'semantic-ui-react';
 
 import WordItem from './WordItem';
 
-const WordList = () => {
+const WordList = (props) => {
+  const { submitted } = props;
+
   return (
-    <Card 
+    <Card
       style={{ 
         marginTop: '5em',
         paddingBottom: '3em' 
