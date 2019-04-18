@@ -15,7 +15,7 @@ class Template extends Component {
       lang: '',
       wordError: false,
       searchable: false,
-      response: {},
+      variables: [],
     };
   }
 
@@ -42,7 +42,8 @@ class Template extends Component {
         return { wordError: prevState.wordError || true } 
       });
       console.log('완전한 한글이 아니네요.. wordError', wordError);
-    } else {
+    } 
+    else {
       this.setState((prevState) => { 
         return { wordError: prevState.wordError && false } 
       });
@@ -55,20 +56,23 @@ class Template extends Component {
       })
 
       // TODO - Search logic, Render WordList
-      // axios test
-      axios.get('https://dog.ceo/api/breeds/image/random')
+      axios.get(`http://127.0.0.1:8000/test/${word}`)
       .then(response => {
-        console.log(response.data);
+        this.setState({
+          variables: response.data.variables
+        })
+        console.log(this.state.variables);
       })
       .catch(error => {
         console.log(error);
       });
-
-    } else {
+    } 
+    else {
       this.setState((prevState) => {
         return { searchable: prevState.searchable && false }
       })
     }
+
     console.log('searchable', searchable);
 
   }
