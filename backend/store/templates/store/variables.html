@@ -16,7 +16,8 @@
             <div class="input-group">
               <input class="form-control" id="f0{{ forloop.counter }}" value="{{ var.snake }}">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" data-clipboard-target="#f0{{ forloop.counter }}">
+                <button id="hits1" class="btn btn-outline-secondary" name="{{ var.id }}"
+                        data-clipboard-target="#f0{{ forloop.counter }}">
                   <i class="far fa-clipboard"></i>
                 </button>
               </div>
@@ -26,7 +27,8 @@
             <div class="input-group">
               <input class="form-control" id="f1{{ forloop.counter }}" value="{{ var.camel }}">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" data-clipboard-target="#f1{{ forloop.counter }}">
+                <button id="hits2" class="btn btn-outline-secondary" name="{{ var.id }}"
+                        data-clipboard-target="#f1{{ forloop.counter }}">
                   <i class="far fa-clipboard"></i>
                 </button>
               </div>
@@ -36,14 +38,15 @@
             <div class="input-group">
               <input class="form-control" id="f2{{ forloop.counter }}" value="{{ var.pascal }}">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" data-clipboard-target="#f2{{ forloop.counter }}">
+                <button id="hits3" class="btn btn-outline-secondary" name="{{ var.id }}"
+                        data-clipboard-target="#f2{{ forloop.counter }}">
                   <i class="far fa-clipboard"></i>
                 </button>
               </div>
             </div>
           </td>
           <td>
-            <div class="row m-1 align-items-center">{{ var.hits }}</div>
+            <div class="row m-1 align-items-center" id="hits-{{ var.id }}">{{ var.hits }}</div>
           </td>
         </tr>
       {% endfor %}
