@@ -1,21 +1,27 @@
 import React, { Fragment } from 'react';
-import { Header, Popup } from 'semantic-ui-react';
+import { Segment, Header, Popup, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const Like = styled.span`
 
 `;
 
+const Variable = styled.span`
+
+`
+
 const WordItem = (props) => {
   const { name, like } = props;
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-    }}>
-      <Header as='h3' style={{ display: 'inline' }}>{name}</Header>
+    <Segment
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Variable>{name}</Variable>
       <Like>{like}</Like>
-    </div>
+    </Segment>
   );
 };
 
