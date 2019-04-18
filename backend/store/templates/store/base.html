@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
   <!-- JS CDN -->
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+          integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 </head>
 <body>
 {% include 'store/nav.html' %}
@@ -54,7 +54,7 @@
     });
 </script>
 <script type="text/javascript">
-    $("#hits").click(function () {
+    $('#hits1, #hits2, #hits3').click(function () {
         var pk = $(this).attr('name');
         console.info('PK:', pk);
         $.ajax({
