@@ -10,6 +10,9 @@
 
 ### Backend
 * Django 2.2
+* Django REST framework 3.9.2
+* drf-yasg 1.15.0
+* Google Cloud Natural Language API
 
 ### Frontend
 * React 16.8.6
