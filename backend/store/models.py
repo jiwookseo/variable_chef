@@ -32,7 +32,7 @@ class Word(models.Model):
 
 class Variable(models.Model):
     name = models.CharField(max_length=200)  # lowercase split by space
-    word = models.ForeignKey(Word, on_delete=models.CASCADE)
+    words = models.ManyToManyField(Word, related_name='variables')
     snake = models.CharField(max_length=200, default='')
     pascal = models.CharField(max_length=200, default='')
     camel = models.CharField(max_length=200, default='')
@@ -44,12 +44,12 @@ class Variable(models.Model):
 
     @classmethod
     def create(cls, name, word):
-        if cls.objects.filter(name=name):
-            return None
-        snake = name.replace(' ', '_')
-        pascal = name.title().replace(' ', '')
-        camel = pascal[0].lower() + pascal[1:]
-        res = cls(name=name, word=word, snake=snake, camel=camel, pascal=pascal)
+        res, created = cls.objects.get_or_create(name=name)
+        if created:
+            res.snake = name.replace(' ', '_')
+            res.pascal = name.title().replace(' ', '')
+            res.camel = res.pascal[0].lower() + res.pascal[1:]
+        res.words.add(word)
         res.save()
         return res
 
@@ -59,7 +59,7 @@ class Variable(models.Model):
         self.save()
 
     def __str__(self):
-        return f"{self.word.kr_word} > {self.name}"
+        return self.name
 
     def __repr__(self):
-        return f"{self.word.kr_word} > {self.name}"
+        return self.name

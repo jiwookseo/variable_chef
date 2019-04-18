@@ -7,7 +7,7 @@ class WordAdmin(admin.ModelAdmin):
 
 
 class VariableAdmin(admin.ModelAdmin):
-    list_display = ('word', 'name', 'hits',)
+    list_display = ('name', 'hits',)
 
 
 admin.site.register(Word, WordAdmin)
