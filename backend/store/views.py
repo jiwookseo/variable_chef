@@ -4,6 +4,7 @@ from rest_framework import generics
 from .serializers import VariableSerializer, WordSerializer
 from .models import Word, Variable
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
 
@@ -60,17 +61,18 @@ def index(request):
     return render(request, 'store/index.html', {'word': word})
 
 
-@login_required
 @require_POST
 def hits(request):
-    pk = request.POST.get('pk', None)  # ajax 통신을 통해서 template에서 POST방식으로 전달
+    pk = request.POST.get('pk', None)
     variable = get_object_or_404(Variable, pk=pk)
-    check = request.user not in variable.hit_users.all()
-    if check:
-        variable.hit_users.add(request.user)
-        variable.update_hits()
+    check = False
+    if request.user.is_authenticated:
+        check = request.user not in variable.hit_users.all()
+        if check:
+            variable.hit_users.add(request.user)
+            variable.update_hits
     context = {
         'check': check,
         'hits': variable.hits,
     }
-    return HttpResponse(json.dumps(context), content_type="application/json")
+    return HttpResponse(json.dumps(context), "application/json")
