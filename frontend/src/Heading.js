@@ -15,7 +15,12 @@ const Lead = styled.p`
 
 const Heading = () => {
   return (
-    <Container style={{ marginTop: '3em', marginBottom: '4em', }}>
+    <Container 
+      style={{ 
+        marginTop: '3em', 
+        marginBottom: '4em', 
+      }}
+    >
       <StyledHeader
         as='h1' 
         textAlign='center'
