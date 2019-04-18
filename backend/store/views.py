@@ -1,5 +1,6 @@
 import json
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.http import JsonResponse
 from rest_framework import generics
 from .serializers import VariableSerializer, WordSerializer
 from .models import Word, Variable
@@ -76,3 +77,26 @@ def hits(request):
         'hits': variable.hits,
     }
     return HttpResponse(json.dumps(context), "application/json")
+
+
+def test(request, q):
+    temp = Word.objects.filter(kr_word=q)
+    if temp:
+        created = False
+        word = temp.first()
+    else:
+        created = True
+        word = Word.create(q)
+    context = {
+        'created': created,
+        'kr_word': word.kr_word,
+        'en_word': word.en_word,
+        'variables': [{
+            'name': variable.name,
+            'snake': variable.snake,
+            'pascal': variable.pascal,
+            'camel': variable.camel,
+            'hits': variable.hits,
+        } for variable in word.variables.all()],
+    }
+    return JsonResponse(context, json_dumps_params={'ensure_ascii': True})
