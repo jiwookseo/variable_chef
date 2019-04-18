@@ -20,6 +20,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('test/<str:q>', views.test, name='test'),
     path('hits/', views.hits, name='hits'),
     path('search/', views.index, name='search'),
     path('api/word/', views.ListWord.as_view()),
