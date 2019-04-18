@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Form, Label } from 'semantic-ui-react';
 // import styled from 'styled-components';
 // import theme from './theme';
 
@@ -44,20 +44,30 @@ const SearchBar = (props) => {
           placeholder='사용 언어'
           onChange={onSelect}
           defaultValue={lang}
+          style={{
+            
+          }}
         />
-        <Form.Input
-          placeholder='한글 단어'
-          name='word'
-          onChange={onChange}
-          defaultValue={word}
-          error={wordError}
-        />
+        <Form.Field>
+          <Form.Input
+            placeholder='한글 단어'
+            name='word'
+            onChange={onChange}
+            defaultValue={word}
+            error={wordError}
+          />
+          { wordError &&          
+            <Label basic color='red' pointing>
+              한글 단어를 입력해주세요.
+            </Label>
+          }
+        </Form.Field>
         <Form.Button 
-          content='Cook' 
+          content='Cook 🍳' 
           inverted color='green'
           type='submit'
           disabled={
-            !word || !lang || wordError
+            !word || !lang
           }
         />
       </Form.Group>
