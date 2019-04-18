@@ -7,7 +7,7 @@ class VariableSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'word',
+            'words',
             'camel',
             'snake',
             'pascal',
@@ -22,5 +22,6 @@ class WordSerializer(serializers.ModelSerializer):
             'id',
             'kr_word',
             'en_word',
+            'variables',
         )
         model = Word
