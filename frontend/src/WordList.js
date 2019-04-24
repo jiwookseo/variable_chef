@@ -4,17 +4,37 @@ import { Grid, Segment, Label } from 'semantic-ui-react';
 
 import WordItem from './WordItem';
 
+const cases = {
+  snake: 'Snake case 🐍',
+  pascal: 'Pascal case 🐫',
+  camel: 'Camel case 🐪',
+}
+
+const langToCase = {
+  javascript: 'camel',
+  python: 'snake',
+  java: '',
+  c: '',
+  cpp: '',
+}
+
 const WordList = (props) => {
-  const { langCase } = props;
+  const { variables, lang } = props;
+  const caseKey = langToCase[lang];
+  const caseName = cases[caseKey];
+
   return (
     <Grid.Row>
       <Grid.Column>
-        <Segment padded raised size="huge">
-          <Label size='large' attached='top left'>Snake case 🐍</Label> {/*{langCase}*/}
+        <Segment padded raised size='huge'>
+          <Label size='large' attached='top left'>{caseName}</Label> {/*{langCase}*/}
           <Segment.Group>
-            <WordItem name="temporary_variable" like="16"/>
-            <WordItem name="temp_var" like="7"/>
-            <WordItem name="tmp_vrb" like="6"/>
+            {variables.map(variable => 
+              <WordItem 
+                key={variable.id} 
+                name={variable[caseKey]}
+              />
+            )}
           </Segment.Group>
         </Segment>
       </Grid.Column>

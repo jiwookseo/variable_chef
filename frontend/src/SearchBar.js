@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label } from 'semantic-ui-react';
+import { Form, Label, Select } from 'semantic-ui-react';
 // import styled from 'styled-components';
 // import theme from './theme';
 
-const options = [
+const languages = [
   { key: 'python', text: 'Python', value: 'python' },
   { key: 'javascript', text: 'JavaScript', value: 'javascript' },
   { key: 'java', text: 'Java', value: 'java' },
   { key: 'c', text: 'C', value: 'c' },
   { key: 'cpp', text: 'C++', value: 'cpp' },
-]
+];
 
 const SearchBar = (props) => {
   const { 
@@ -18,19 +18,12 @@ const SearchBar = (props) => {
     lang,
     wordError,
     onChange,
-    onSelect,
     onSubmit,
   } = props;
 
-  // static propTypes = {
-  //   word: PropTypes.string.isRequired,
-  //   lang: PropTypes.string.isRequired,
-  // };
-
-  // static defaultProps = {
-  //   word: '',
-  //   lang: '',
-  // };
+  const Options = languages.map(lang => 
+    <option key={lang.key} value={lang.value}>{lang.text}</option>
+  );
 
   return (
     <Form 
@@ -38,22 +31,22 @@ const SearchBar = (props) => {
       style={{ marginBottom: '3em' }}
     >
       <Form.Group>
-        <Form.Select
-          options={options} 
-          name='lang'
-          placeholder='사용 언어'
-          onChange={onSelect}
-          defaultValue={lang}
-          style={{
-            
-          }}
-        />
+        <Form.Field>
+          <select 
+            name='lang'
+            value={lang} 
+            onChange={onChange}
+            placeholder='사용 언어'
+          >
+            {Options}
+          </select>
+        </Form.Field>
         <Form.Field>
           <Form.Input
             placeholder='한글 단어'
-            name='word'
             onChange={onChange}
-            defaultValue={word}
+            name='word'
+            value={word}
             error={wordError}
           />
           { wordError &&          
