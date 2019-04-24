@@ -29,7 +29,7 @@ const Heading = () => {
         as='h1' 
         textAlign='center'
       >
-        👩🏻‍🍳 Variable Chef 👨🏻‍🍳
+        👩🏼‍🍳 Variable Chef 👨🏼‍🍳
       </StyledHeader>
       <Lead>변수명을 요리해드립니다</Lead>
     </Container>
