@@ -12,27 +12,21 @@ class Template extends Component {
     super(props);
     this.state = {
       word: '',
-      lang: '',
+      lang: 'python',
       wordError: false,
       searchable: false,
       variables: [],
     };
   }
 
-  handleSelectChange = (e, { value }) => {
+  handleInputChange = (event) => {
     this.setState({
-      lang: value
+      [event.target.name]: event.target.value
     });
   }
 
-  handleInputChange = (e, { value }) => {
-    this.setState({
-      word: value
-    });
-  }
-
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = event => {
+    event.preventDefault();
     const { word, wordError, searchable } = this.state;
 
     // FIXME: Word validation
@@ -74,37 +68,31 @@ class Template extends Component {
     }
 
     console.log('searchable', searchable);
-
   }
 
   render() {
-    const { 
-      word, 
-      lang,
-      wordError,
-      searchable,
-    } = this.state;
-
     return (
       <Fragment>
         <Heading/>
         <Grid centered columns={2}>
           <SearchBar 
-            word={word}
-            lang={lang}
-            wordError={wordError}
+            word={this.state.word}
+            lang={this.state.lang}
+            wordError={this.state.wordError}
             onChange={this.handleInputChange}
-            onSelect={this.handleSelectChange}
             onSubmit={this.handleSubmit}
           />
         </Grid>
         {/* FIXME - 검색 결과 반환 시 렌더링 */}
-        { searchable && 
+        { this.state.searchable && 
           <Grid 
             centered 
             columns={3}
           >
-            <WordList />
+            <WordList 
+              variables={this.state.variables}
+              lang={this.state.lang}
+            />
           </Grid>
         }
       </Fragment>
