@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['variablechef.herokuapp.com/', '127.0.0.1:8000']
 
 
 # Application definition
@@ -55,8 +55,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 # )
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,3 +137,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
