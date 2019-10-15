@@ -55,9 +55,9 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http//ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
-    'http//15.164.231.243',
-    'http//localhost:8000',
+    'http://ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
+    'http://15.164.231.243',
+    'http://localhost:8000',
 )
 
 MIDDLEWARE = [
