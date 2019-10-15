@@ -53,7 +53,7 @@ class Template extends Component {
 
       // TODO - Search logic, Render WordList
       axios
-        .get(`${BASE_URL}/test/${word}`)
+        .get(`${BASE_URL}/test/${word}/`)
         .then(response => {
           this.setState({
             variables: response.data.variables
