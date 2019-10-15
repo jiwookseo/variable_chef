@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:8000",
+  "homepage" : "http://ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com",
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.8.6",
@@ -20,8 +20,8 @@
     "postisntall": "yarn run build"
   },
   "engines": {
-    "node": "12.4.0",
-    "yarn": "1.16.0"
+    "node": "10",
+    "yarn": "1"
   },
   "eslintConfig": {
     "extends": "react-app"
