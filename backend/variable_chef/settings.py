@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+NODE_ENV = os.environ.get("NODE_ENV", "develop")
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,9 +26,13 @@ SECRET_KEY = os.environ.get(
     'VC_SECRET_KEY', '1rfiu&tpm5*8mmdci13(!9%%n1m_kv2)4ra(1sjl=!!uczrw19')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = False if NODE_ENV == "production" else True
 
-ALLOWED_HOSTS = ['variablechef.herokuapp.com/', '127.0.0.1:8000']
+ALLOWED_HOSTS = [
+        'ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
+        '15.164.231.243',
+        'localhost',
+]
 
 
 # Application definition
@@ -48,11 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-# CORS_ORIGIN_WHITELIST = (
-#     'http//:localhost:3000',
-# )
+CORS_ORIGIN_WHITELIST = (
+    'http//ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
+    'http//15.164.231.243',
+    'http//localhost:8000',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,11 +137,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '.static_root')
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
