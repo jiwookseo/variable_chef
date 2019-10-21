@@ -54,17 +54,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'http//ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
-    'http//15.164.231.243',
-    'http//localhost:8000',
-)
+CORS_ORIGIN_WHITELIST = [
+    'ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
+    '15.164.231.243',
+    'localhost:8000',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

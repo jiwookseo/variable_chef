@@ -6,6 +6,8 @@
 
 ## Deployment
 
+ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com
+
 ## Built With
 
 ### Backend
