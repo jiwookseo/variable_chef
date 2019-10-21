@@ -2,8 +2,6 @@
 
 Ubuntu 접속 후 Django / React 서버 배포를 위한 세팅 작업
 
----
-
 ## 서버 환경 설정
 
 1. locale 설정
@@ -310,16 +308,16 @@ Ubuntu 접속 후 Django / React 서버 배포를 위한 세팅 작업
     `mysite.conf` 파일을 열어 아래와 같이 작성한다.
 
     ```
-  server {
-        listen 80;
-        server_name *.compute.amazonaws.com;
-        charset utf-8;
-      client_max_body_size 128M;
-    
-      location / {
-            uwsgi_pass  unix:///tmp/mysite.sock;
-            include     uwsgi_params;
-        }
+    server {
+           listen 80;
+           server_name *.compute.amazonaws.com;
+           charset utf-8;
+         client_max_body_size 128M;
+
+         location / {
+               uwsgi_pass  unix:///tmp/mysite.sock;
+               include     uwsgi_params;
+         }
     }
     ```
   
