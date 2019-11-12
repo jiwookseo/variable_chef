@@ -29,9 +29,9 @@ SECRET_KEY = os.environ.get(
 DEBUG = False if NODE_ENV == "production" else True
 
 ALLOWED_HOSTS = [
-        'ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
-        '15.164.231.243',
-        'localhost',
+    'ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
+    '15.164.231.243',
+    'localhost',
 ]
 
 
@@ -57,7 +57,7 @@ INSTALLED_APPS = [
 CORS_ORIGIN_WHITELIST = [
     'ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com',
     '15.164.231.243',
-    'localhost:8000',
+    'localhost:3000',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +76,7 @@ ROOT_URLCONF = 'variable_chef.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,5 +146,3 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
-

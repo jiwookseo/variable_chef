@@ -8,7 +8,9 @@ import SearchBar from "./SearchBar";
 import WordList from "./WordList";
 
 const BASE_URL =
-  "http://ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com:8000";
+  process.env.NODE_ENV === "production"
+    ? "http://ec2-15-164-231-243.ap-northeast-2.compute.amazonaws.com:8000"
+    : "http://localhost:8000";
 
 class Template extends Component {
   constructor(props) {
