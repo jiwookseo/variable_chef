@@ -4,7 +4,7 @@
 
 한글 단어를 snack case, camel case 와 같은 변수명명법에 알맞는 단어로 추천해주는 서비스
 
-![main image](assets/image/main.PNG)
+![main image](assets/image/main.png)
 
 &nbsp;
 
