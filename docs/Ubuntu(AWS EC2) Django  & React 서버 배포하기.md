@@ -123,7 +123,7 @@ Ubuntu 접속 후 Django / React 서버 배포를 위한 세팅 작업
 * Django requirements 설치
 
   ```bash
-  sudo pip install -r reqirements.txt 
+  pip install -r reqiurements.txt 
   ```
 
 
