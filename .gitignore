@@ -1,3 +1,5 @@
+.config/
+.static_root/
 # Mac OS auto generated
 .DS_STORE
 
